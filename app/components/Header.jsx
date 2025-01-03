@@ -1,18 +1,27 @@
+"use client";
 import Link from "next/link";
 
 export default function Header() {
   const menuList = [
     {
+      id: 1,
       name: "Home",
       link: "/",
     },
     {
+      id: 2,
       name: "About",
       link: "/about-us",
     },
     {
+      id: 3,
       name: "Contact",
       link: "/contact",
+    },
+    {
+      id: 4,
+      name: "Locate Us",
+      link: "/locate",
     },
   ];
   return (
