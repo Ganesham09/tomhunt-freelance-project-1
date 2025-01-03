@@ -3,17 +3,14 @@ import Link from "next/link";
 export default function Header() {
   const menuList = [
     {
-      id: 1,
       name: "Home",
       link: "/",
     },
     {
-      id: 2,
       name: "About",
       link: "/about-us",
     },
     {
-      id: 3,
       name: "Contact",
       link: "/contact",
     },
@@ -31,7 +28,7 @@ export default function Header() {
         })}
       </div>
       <Link href="/login">
-        <button className="bg-blue-600 px-5 font-bold py-2 rounded-full text-white">
+        <button className="bg-blue-600 px-4 font-bold py-2 rounded-full text-white">
           Login
         </button>
       </Link>
