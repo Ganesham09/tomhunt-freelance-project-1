@@ -4,7 +4,7 @@ import { Button } from "@nextui-org/react";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import Link from "next/link";
 import toast from "react-hot-toast";
-import { auth } from "@/lib/firestore/firebase";
+import { auth } from "@/lib/firebase";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 

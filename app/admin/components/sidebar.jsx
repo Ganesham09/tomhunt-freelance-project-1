@@ -1,5 +1,6 @@
 "use client";
-
+import { auth } from "@/lib/firebase";
+import { signOut } from "firebase/auth";
 import {
   LayoutDashboard,
   ShoppingBasket,
@@ -10,9 +11,11 @@ import {
   Star,
   LibraryBig,
   LogOut,
+  UsersRound,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function Sidebar() {
   const menuList = [
@@ -56,10 +59,15 @@ export default function Sidebar() {
       link: "/admin/collections",
       icon: <LibraryBig className="h-5 w-5" />,
     },
+    {
+      name: "Admins",
+      link: "/admin/admins",
+      icon: <UsersRound className="h-5 w-5" />,
+    },
   ];
 
   return (
-    <section className="flex flex-col gap-10 bg-white border-r px-5 py-3 h-screen overflow-hidden md:w-[300px]">
+    <section className="flex flex-col gap-10 bg-white border-r px-5 py-3 h-screen overflow-hidden w-[260px]">
       <div className="flex justify-center items-center w-full py-4">
         <img className="h-9 w-auto object-contain" src="/logo.png" alt="Logo" />
       </div>
@@ -69,7 +77,20 @@ export default function Sidebar() {
         })}
       </ul>
       <div className="flex justify-center items-center ">
-        <button className="flex gap-2 items-center px-3 py-2 hover:bg-red-400  rounded-xl font-semibold w-full justify-center ease-soft-spring transition-all duration-400 ">
+        <button
+          onClick={async () => {
+            try {
+              await toast.promise(signOut(auth), {
+                loading: "Logging out...",
+                success: "Logged out",
+                error: (e) => e?.message,
+              });
+            } catch (error) {
+              toast.error(error?.message);
+            }
+          }}
+          className="flex gap-2 items-center px-3 py-2 hover:bg-red-400  rounded-xl font-semibold w-full justify-center ease-soft-spring transition-all duration-400 "
+        >
           <LogOut className="h-5 w-5" />
           Logout
         </button>
