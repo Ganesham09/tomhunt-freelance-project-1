@@ -31,7 +31,7 @@ export default function Sidebar() {
     },
     {
       name: "Categories",
-      link: "/admin/categoreis",
+      link: "/admin/categories",
       icon: <Layers className="h-5 w-5" />,
     },
     {
